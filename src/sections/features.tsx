@@ -1,34 +1,53 @@
+'use client'
+
+import Avatar from '@/components/ui/avatat'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 import Marquee from 'react-fast-marquee'
 
 export default function Features() {
-  const feature = {
-    title: 'Feature',
-    text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque reiciendis ab similique expedita quaerat nesciunt.',
-  }
+  const [review, setReview] = useState([])
 
-  const features = Array.from({ length: 6 }, () => ({ ...feature }))
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/posts').then((res) => {
+      setReview(res.data)
+    })
+  }, [])
+
+  const features = [
+    { sender: 'Rafi Cahyadi' },
+    { sender: 'Silfi Nur Aini' },
+    { sender: 'Anazri Eriyani' },
+    { sender: 'Ayu Afsari' },
+    { sender: 'Reyga Marza' },
+    { sender: 'Nabil Asykaroe' },
+  ].map((feature, index) => ({
+    ...feature,
+    text: review[index]?.body || 'Loading...',
+  }))
 
   return (
-    <div>
+    <div id='features'>
       <section className="border-t-border dark:border-t-darkBorder dark:bg-darkBg border-t-2 bg-bg py-20 font-base lg:py-[100px]">
         <h2 className="mb-14 px-5 text-center text-2xl font-heading md:text-3xl lg:mb-20 lg:text-4xl">
-          Lorem ipsum dolor sit amet consectetur adipisicing
+          Kata Mereka Lulusan dan Murid <br /> SMKN 11 Bandung
         </h2>
 
         <div className="mx-auto grid w-container max-w-full grid-cols-1 gap-5 px-5 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, i) => {
-            return (
-              <div
-                className="border-border dark:border-darkBorder dark:bg-secondaryBlack shadow-light dark:shadow-dark flex flex-col gap-3 rounded-base border-2 bg-white p-5"
-                key={i}
-              >
+          {features.map((feature, i) => (
+            <div
+              className="border-border dark:border-darkBorder dark:bg-secondaryBlack shadow-light dark:shadow-dark flex flex-col gap-3 rounded-base border-2 bg-white p-5"
+              key={i}
+            >
+              <div className='flex gap-3 items-center'>                  
+                <Avatar imageUrl='https://neobrutalism-bento.netlify.app/pfp.png' />
                 <h4 className="text-xl font-heading">
-                  {feature.title} {i + 1}
+                  {feature.sender}
                 </h4>
-                <p>{feature.text}</p>
               </div>
-            )
-          })}
+              <p>{feature.text}</p>
+            </div>
+          ))}
         </div>
       </section>
       <div>
@@ -38,15 +57,13 @@ export default function Features() {
         >
           {Array(10)
             .fill('xd')
-            .map((x, id) => {
-              return (
-                <div className="flex items-center" key={id}>
-                  <span className="mx-8 text-xl font-heading sm:text-2xl lg:text-4xl">
-                    Neobrutalism components
-                  </span>
-                </div>
-              )
-            })}
+            .map((x, id) => (
+              <div className="flex items-center" key={id}>
+                <span className="mx-8 text-xl font-heading sm:text-2xl lg:text-4xl">
+                  SMKN 11 BANDUNG
+                </span>
+              </div>
+            ))}
         </Marquee>
       </div>
     </div>

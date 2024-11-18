@@ -62,7 +62,7 @@ export default function Faq() {
               return (
                 <div className="flex items-center" key={id}>
                   <span className="mx-8 text-xl font-heading sm:text-2xl lg:text-4xl">
-                    Neobrutalism components
+                    #BEDABISA
                   </span>
                 </div>
               )

@@ -7,7 +7,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 const dmSans = DM_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Neobrutalism Saas template',
+  title: 'Eleveners',
 }
 
 export default function RootLayout({

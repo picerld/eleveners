@@ -14,12 +14,12 @@ const config: Config = {
         container: '1300px',
       },
       colors: {
-        main: '#A3E636',
-        mainAccent: '#88cc19', // not needed for shadcn components
+        main: '#88aaee',
+        mainAccent: '#4d80e6', // not needed for shadcn components
         overlay: 'rgba(0,0,0,0.8)', // background color overlay for alert dialogs, modals, etc.
   
         // light mode
-        bg: '#E0E7F1',
+        bg: '#dfe5f2',
         text: '#000',
         border: '#000',
   
@@ -27,7 +27,7 @@ const config: Config = {
         darkBg: '#2c312b',
         darkText: '#eeefe9',
         darkBorder: '#000',
-        secondaryBlack: '#212121', // opposite of plain white, not used pitch black because borders and box-shadows are that color 
+        secondaryBlack: '#212121',  // opposite of plain white, not used pitch black because borders and box-shadows are that color 
       },
       borderRadius: {
         base: '5px',

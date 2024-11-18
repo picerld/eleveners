@@ -12,7 +12,7 @@ export default function Home() {
       <Features />
       <Community />
       <Faq />
-      <Pricing />
+      {/* <Pricing /> */}
       <Footer />
     </>
   )
