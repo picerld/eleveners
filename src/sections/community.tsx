@@ -10,17 +10,20 @@ export default function Community() {
       'Pengembangan Perangkat Lunak dan Gim': 'PPLG',
       'Desan Komunikasi Visual  ': 'AI',
       'Teknik Jaringan Komputer dan Telekomunikasi': 'TJKT',
-    }
+    } as const; // Mark the object as readonly to help TypeScript infer key types
 
-    const major = faker.helpers.arrayElement(Object.keys(majorAbbreviationMap))
+    // Use keyof typeof to get the key type of majorAbbreviationMap
+    const major = faker.helpers.arrayElement(
+      Object.keys(majorAbbreviationMap) as Array<keyof typeof majorAbbreviationMap>
+    );
 
     return {
-      pfp: "https://neobrutalism-bento.netlify.app/pfp.png",
-      fullName: majorAbbreviationMap[major],
+      pfp: 'https://neobrutalism-bento.netlify.app/pfp.png',
+      fullName: majorAbbreviationMap[major], // TypeScript will now correctly infer this
       major,
       review: faker.lorem.sentences({ min: 1, max: 3 }),
-    }
-  }
+    };
+  };
 
   return (
     <section className="border-b-border dark:border-b-darkBorder dark:bg-secondaryBlack inset-0 flex w-full flex-col items-center justify-center border-b-2 bg-white bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] font-base">
@@ -44,7 +47,7 @@ export default function Community() {
                     <img
                       className="border-border dark:border-darkBorder h-12 w-12 rounded-base border-2"
                       src={pfp}
-                      alt='pfp'
+                      alt="pfp"
                     />
                     <div>
                       <h4 className="text-lg font-heading">{fullName}</h4>
@@ -59,5 +62,5 @@ export default function Community() {
         </div>
       </div>
     </section>
-  )
+  );
 }
